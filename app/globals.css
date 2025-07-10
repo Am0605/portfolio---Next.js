@@ -394,3 +394,29 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Toast/Sonner custom styles for better description visibility */
+[data-sonner-toast] [data-description] {
+  color: rgba(255, 255, 255, 0.9) !important;
+  opacity: 1 !important;
+}
+
+[data-sonner-toast][data-type="warning"] [data-description] {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+[data-sonner-toast][data-type="info"] [data-description] {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Ensure toast background has good contrast */
+[data-sonner-toast] {
+  background: rgba(0, 0, 0, 0.9) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-sonner-toast][data-type="warning"] {
+  background: rgba(251, 146, 60, 0.95) !important;
+  color: white !important;
+}

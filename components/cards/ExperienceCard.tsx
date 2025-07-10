@@ -18,14 +18,29 @@ export const ExperienceCard = () => {
       <h2 className="text-lg font-bold mb-3 text-white">Experience</h2>
       <div className="space-y-3">
         <div className="border-l-4 border-cyan-400 pl-3">
-          <h3 className="font-semibold text-white text-sm">Senior Software Engineer</h3>
-          <p className="text-blue-100 text-xs">TechCorp Inc. • 2022 - Present</p>
-          <p className="text-blue-200 text-xs mt-1">Leading full-stack development</p>
+          <h3 className="font-semibold text-white text-sm">Trainee Web Developer</h3>
+          <p className="text-blue-100 text-xs">Webse Sdn. Bhd. • 2025 - Present</p>
+          <p className="text-blue-200 text-xs mt-1">Maintenance and development using CMS</p>
         </div>
-        <div className="border-l-4 border-sky-400 pl-3">
-          <h3 className="font-semibold text-white text-sm">Software Engineer</h3>
-          <p className="text-blue-100 text-xs">StartupXYZ • 2020 - 2022</p>
-          <p className="text-blue-200 text-xs mt-1">Built scalable web applications</p>
+        <div className="border-l-4 border-sky-500 pl-3">
+          <h3 className="font-semibold text-white text-sm">EvaXpert Team Developer</h3>
+          <p className="text-blue-100 text-xs">EvaXpert • 2023 - Present</p>
+          <p className="text-blue-200 text-xs mt-1">Enhance the EvaXpert UI platform</p>
+        </div>
+        <div className="border-l-4 border-sky-500 pl-3">
+          <h3 className="font-semibold text-white text-sm">Assignment Helper</h3>
+          <p className="text-blue-100 text-xs">Freelance • Present</p>
+          <p className="text-blue-200 text-xs mt-1">Help students with their assignments (code related)</p>
+        </div>
+        <div className="border-l-4 border-sky-500 pl-3">
+          <h3 className="font-semibold text-white text-sm">EvaXpert Team Developer</h3>
+          <p className="text-blue-100 text-xs">EvaXpert • 2023 - Present</p>
+          <p className="text-blue-200 text-xs mt-1">Enhance the EvaXpert UI platform</p>
+        </div>
+        <div className="border-l-4 border-sky-500 pl-3">
+          <h3 className="font-semibold text-white text-sm">EvaXpert Team Developer</h3>
+          <p className="text-blue-100 text-xs">EvaXpert • 2023 - Present</p>
+          <p className="text-blue-200 text-xs mt-1">Enhance the EvaXpert UI platform</p>
         </div>
       </div>
     </motion.div>
