@@ -95,7 +95,7 @@ export const CentreSectionCard = () => {
             <div className="flex items-center mb-3">
               <h3 className="text-lg font-bold text-slate-800">About Me</h3>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed mb-4">
+            <p className="text-sm text-slate-700 leading-relaxed mb-4">
             I’m a fresh Software Engineer graduate from Universiti Pendidikan Sultan Idris (UPSI) who turns ideas into real applications: 
             I’ve built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
             and a Laravel-backed inventory system with intuitive dashboards and automated reporting. 
@@ -103,7 +103,7 @@ export const CentreSectionCard = () => {
             </p>
           </div>
           
-          {/* Social Links and Download Button in one row */}
+          {/* Social Links and Download Button */}
           <div className="flex-shrink-0">
             <div className="flex items-center justify-between space-x-3">
               {/* Social Links */}

@@ -17,6 +17,7 @@ export const HobbiesCard = () => {
       transition={{ duration: 0.3 }}
     >
       <Image
+        loading="lazy"
         src="/images/hobbies/badminton.jpg"
         alt="hobbies"
         fill
