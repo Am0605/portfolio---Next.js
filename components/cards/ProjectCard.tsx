@@ -17,8 +17,8 @@ export const ProjectCard = () => {
       transition={{ duration: 0.3 }}
     >
       <Image 
-        loading="lazy"
-        src="/images/project.png"
+        priority ={true}
+        src="/images/project.jpeg"
         alt="Projects"
         fill
         className="object-cover"

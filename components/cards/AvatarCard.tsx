@@ -17,7 +17,7 @@ export const AvatarCard = () => {
       transition={{ duration: 0.3 }}
     >
       <Image
-        loading="lazy"
+        priority ={true}
         src="/images/avatar1.webp"
         alt="Profile Picture"
         fill
