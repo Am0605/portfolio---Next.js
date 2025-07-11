@@ -30,7 +30,7 @@ export default function Home() {
 
     const timer = setTimeout(() => {
       toast("🚧 This page is under construction", {
-        description: "Some features may be incomplete or unavailable.",
+        description: "Some features may be incomplete or unavailable. \n But feel free to explore! 🚀",
         duration: 5000,
         position: "top-right",
         style: {
@@ -38,7 +38,7 @@ export default function Home() {
           border: '1px solid rgba(255, 255, 255, 0.2)',
           backdropFilter: 'blur(10px)'
         },
-        descriptionClassName: "text-white/90"
+        descriptionClassName: "text-white/90 whitespace-pre-line"
       });
     }, 2000);
 
