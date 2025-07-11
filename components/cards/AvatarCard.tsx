@@ -11,7 +11,7 @@ const childVariants = {
 export const AvatarCard = () => {
   return (
     <motion.div 
-      className="hidden md:block md:col-start-3 md:row-start-1 md:col-span-1 md:row-span-2 glass-card relative overflow-hidden"
+      className="col-span-3 row-span-1 md:col-start-3 md:row-start-1 md:col-span-1 md:row-span-2 glass-card relative overflow-hidden"
       variants={childVariants}
       whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.3 }}
@@ -22,7 +22,7 @@ export const AvatarCard = () => {
         alt="Profile Picture"
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 0px, 25vw"
+        sizes="(max-width: 768px) 100vw, 25vw"
       />
     </motion.div>
   );
