@@ -46,26 +46,29 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-screen w-screen overflow-hidden relative">
+    <div className="min-h-screen w-screen overflow-x-hidden md:h-screen md:overflow-hidden relative">
       <BackgroundGradientAnimation />
       
       <motion.div 
-        className="grid grid-cols-3 md:grid-cols-4 grid-rows-3 md:grid-rows-6 gap-2 md:gap-4 p-4 h-full relative z-10"
+        className="grid grid-cols-3 md:grid-cols-4 auto-rows-fr md:grid-rows-6 gap-2 md:gap-4 p-4 min-h-screen md:h-full relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Experience Section */}
-        <ExperienceCard />
-
-        {/* Recommendation Section */}
-        <RecommendationCard />
-
-        {/* Avatar/Photo Section */}
+        {/* Avatar/Photo Section - First on mobile */}
         <AvatarCard />
+
+        {/* Centre Section - Second on mobile */}
+        <CentreSectionCard />
+
+        {/* Experience Section - Third on mobile */}
+        <ExperienceCard />
 
         {/* Project Section */}
         <ProjectCard />
+
+        {/* Skills & Tools */}
+        <SkillsCard />
 
         {/* Hobbies Section */}
         <HobbiesCard />
@@ -73,14 +76,11 @@ export default function Home() {
         {/* Current Focus */}
         <CurrentFocusCard />
 
-        {/* Centre Section */}
-        <CentreSectionCard />
-
         {/* Quick Links */}
         <AchievementCard />
 
-        {/* Skills & Tools */}
-        <SkillsCard />
+        {/* Recommendation Section */}
+        <RecommendationCard />
       </motion.div>
     </div>
   );

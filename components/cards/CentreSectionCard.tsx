@@ -134,7 +134,7 @@ export const CentreSectionCard = () => {
               <div className={`${isExpanded ? 'flex-1 min-h-0' : 'flex-shrink-0'} transition-all duration-300`}>
                 <div className={`${isExpanded ? 'h-full overflow-y-auto' : ''}`}>
                   <p className={`text-xs text-justify text-slate-700 leading-relaxed transition-all duration-300 ${
-                    isExpanded ? 'line-clamp-none mb-4' : 'line-clamp-7 mb-3'
+                    isExpanded ? 'line-clamp-none mb-3' : 'line-clamp-7 mb-3'
                   }`}>
                     I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
                     I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
