@@ -130,19 +130,21 @@ export const CentreSectionCard = () => {
             
             {/* Mobile: Expandable text */}
             <div className="sm:hidden">
-              <p className={`text-xs text-justify text-slate-700 leading-relaxed mb-3 transition-all duration-300 ${
-                isExpanded ? 'line-clamp-none' : 'line-clamp-7'
-              }`}>
-                I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
-                I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
-                and a web-based inventory system with intuitive dashboards and automated reporting. 
-                I'm also a President of the Alumni Association, driving member engagement and data-driven initiatives. When I'm not coding, you'll find me on the badminton court wielding my racket, studying Mandarin in evening classes, or exploring the latest AI libraries to tackle real-world challenges.            
-              </p>
+              <div className={`${isExpanded ? 'max-h-40 overflow-y-auto' : ''} transition-all duration-300`}>
+                <p className={`text-xs text-justify text-slate-700 leading-relaxed transition-all duration-300 ${
+                  isExpanded ? 'line-clamp-none mb-4' : 'line-clamp-7 mb-3'
+                }`}>
+                  I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
+                  I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
+                  and a web-based inventory system with intuitive dashboards and automated reporting. 
+                  I'm also a President of the Alumni Association, driving member engagement and data-driven initiatives. When I'm not coding, you'll find me on the badminton court wielding my racket, studying Mandarin in evening classes, or exploring the latest AI libraries to tackle real-world challenges.            
+                </p>
+              </div>
               
               {/* Read More/Less Button */}
               <button
                 onClick={toggleExpanded}
-                className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 mb-4"
+                className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 mb-6"
               >
                 <span>{isExpanded ? 'Read Less' : 'Read More'}</span>
                 <svg 
