@@ -19,8 +19,16 @@ export const CurrentFocusCard = () => {
         <h2 className="text-lg font-bold mb-2">Current Focus</h2>
         <div className="space-y-2">
           <div className="bg-white/20 backdrop-blur-sm rounded p-2 border border-white/10">
-            <h3 className="font-medium text-sm">AI Integration</h3>
-            <p className="text-xs opacity-90">Next.js + OpenAI</p>
+            <h3 className="font-medium text-sm">MediMate - AI Integration</h3>
+            <p className="text-xs opacity-90">React Native + Random Forest Model</p>
+          </div>
+          <div className="bg-white/20 backdrop-blur-sm rounded p-2 border border-white/10">
+            <h3 className="font-medium text-sm">Mandarin Class</h3>
+            <p className="text-xs opacity-90">HSK1 by Kunkwan</p>
+          </div>
+          <div className="bg-white/20 backdrop-blur-sm rounded p-2 border border-white/10">
+            <h3 className="font-medium text-sm">Smart Inventory</h3>
+            <p className="text-xs opacity-90">Laravel (for testing email provider)</p>
           </div>
         </div>
       </div>
