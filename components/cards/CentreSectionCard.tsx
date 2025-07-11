@@ -121,7 +121,7 @@ export const CentreSectionCard = () => {
               <div className="w-1 h-4 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full mr-2 sm:hidden"></div>
               <h3 className="text-sm sm:text-lg font-bold text-slate-800">About Me</h3>
             </div>
-            <p className="text-xs sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-4 line-clamp-6 sm:line-clamp-none">
+            <p className="text-xs text-justify sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-4 line-clamp-none">
               I'm a fresh Software Engineer graduate from Universiti Pendidikan Sultan Idris (UPSI) who turns ideas into real applications: 
               I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
               and a Laravel-backed inventory system with intuitive dashboards and automated reporting. 
