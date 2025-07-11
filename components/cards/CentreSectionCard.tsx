@@ -101,9 +101,9 @@ export const CentreSectionCard = () => {
       
       {/* Content */}
       <div className={`absolute inset-3 sm:inset-4 md:inset-6 opacity-100 translate-y-0 md:opacity-0 md:translate-y-6 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-200 ease-out delay-100 pointer-events-auto md:pointer-events-none md:group-hover:pointer-events-auto z-20`}>
-        <div className="h-full flex flex-col justify-between">
+        <div className="h-full flex flex-col">
           {/* Mobile Header - Only visible on mobile */}
-          <div className="block sm:hidden mb-4">
+          <div className="block sm:hidden mb-4 flex-shrink-0">
             <div className="text-center mb-3">
               <h1 className="text-xl font-black bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 bg-clip-text text-transparent tracking-tight leading-tight">
                 Muhammad Adham
@@ -122,29 +122,32 @@ export const CentreSectionCard = () => {
             </div>
           </div>
 
-          <div className="flex-1 overflow-hidden">
-            <div className="flex items-center mb-3 sm:mb-3">
+          {/* About Me Section - Flexible height */}
+          <div className="flex-1 min-h-0 flex flex-col">
+            <div className="flex items-center mb-3 sm:mb-3 flex-shrink-0">
               <div className="w-1 h-4 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full mr-2 sm:hidden"></div>
               <h3 className="text-sm sm:text-lg font-bold text-slate-800">About Me</h3>
             </div>
             
             {/* Mobile: Expandable text */}
-            <div className="sm:hidden">
-              <div className={`${isExpanded ? 'max-h-40 overflow-y-auto' : ''} transition-all duration-300`}>
-                <p className={`text-xs text-justify text-slate-700 leading-relaxed transition-all duration-300 ${
-                  isExpanded ? 'line-clamp-none mb-4' : 'line-clamp-5 mb-3'
-                }`}>
-                  I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
-                  I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
-                  and a web-based inventory system with intuitive dashboards and automated reporting. 
-                  I'm also a President of the Alumni Association, driving member engagement and data-driven initiatives. When I'm not coding, you'll find me on the badminton court wielding my racket, studying Mandarin in evening classes, or exploring the latest AI libraries to tackle real-world challenges.            
-                </p>
+            <div className="sm:hidden flex-1 min-h-0 flex flex-col">
+              <div className={`${isExpanded ? 'flex-1 min-h-0' : 'flex-shrink-0'} transition-all duration-300`}>
+                <div className={`${isExpanded ? 'h-full overflow-y-auto' : ''}`}>
+                  <p className={`text-xs text-justify text-slate-700 leading-relaxed transition-all duration-300 ${
+                    isExpanded ? 'line-clamp-none mb-4' : 'line-clamp-7 mb-3'
+                  }`}>
+                    I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
+                    I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
+                    and a web-based inventory system with intuitive dashboards and automated reporting. 
+                    I'm also a President of the Alumni Association, driving member engagement and data-driven initiatives. When I'm not coding, you'll find me on the badminton court wielding my racket, studying Mandarin in evening classes, or exploring the latest AI libraries to tackle real-world challenges.            
+                  </p>
+                </div>
               </div>
               
               {/* Read More/Less Button */}
               <button
                 onClick={toggleExpanded}
-                className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 mb-6"
+                className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 mb-6 flex-shrink-0"
               >
                 <span>{isExpanded ? 'Read Less' : 'Read More'}</span>
                 <svg 
@@ -167,8 +170,8 @@ export const CentreSectionCard = () => {
             </p>
           </div>
           
-          {/* Social Links and Download Button */}
-          <div className="flex-shrink-0">
+          {/* Social Links and Download Button - Always at bottom */}
+          <div className="flex-shrink-0 mt-auto">
             {/* Mobile: Enhanced vertical stack with better spacing */}
             <div className="flex flex-col space-y-4 sm:hidden">
               {/* Social Links with improved mobile design */}
