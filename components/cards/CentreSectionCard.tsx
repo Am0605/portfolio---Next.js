@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const childVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.95 },
@@ -8,6 +9,11 @@ const childVariants = {
 };
 
 export const CentreSectionCard = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
   const handleDownloadCV = async () => {
     try {
       console.log('Download CV clicked'); // Debug log
@@ -121,10 +127,40 @@ export const CentreSectionCard = () => {
               <div className="w-1 h-4 bg-gradient-to-b from-blue-500 to-indigo-600 rounded-full mr-2 sm:hidden"></div>
               <h3 className="text-sm sm:text-lg font-bold text-slate-800">About Me</h3>
             </div>
-            <p className="text-xs text-justify sm:text-sm text-slate-700 leading-relaxed mb-4 sm:mb-4 line-clamp-none">
-              I'm a fresh Software Engineer graduate from Universiti Pendidikan Sultan Idris (UPSI) who turns ideas into real applications: 
+            
+            {/* Mobile: Expandable text */}
+            <div className="sm:hidden">
+              <p className={`text-xs text-justify text-slate-700 leading-relaxed mb-3 transition-all duration-300 ${
+                isExpanded ? 'line-clamp-none' : 'line-clamp-7'
+              }`}>
+                I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
+                I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
+                and a web-based inventory system with intuitive dashboards and automated reporting. 
+                I'm also a President of the Alumni Association, driving member engagement and data-driven initiatives. When I'm not coding, you'll find me on the badminton court wielding my racket, studying Mandarin in evening classes, or exploring the latest AI libraries to tackle real-world challenges.            
+              </p>
+              
+              {/* Read More/Less Button */}
+              <button
+                onClick={toggleExpanded}
+                className="text-xs font-medium text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center space-x-1 mb-4"
+              >
+                <span>{isExpanded ? 'Read Less' : 'Read More'}</span>
+                <svg 
+                  className={`w-3 h-3 transition-transform duration-200 ${isExpanded ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Desktop: Always show full text */}
+            <p className="hidden sm:block text-sm text-slate-700 leading-relaxed mb-4">
+              I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
               I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
-              and a Laravel-backed inventory system with intuitive dashboards and automated reporting. 
+              and a web-based inventory system with intuitive dashboards and automated reporting. 
               I'm also a President of the Alumni Association, driving member engagement and data-driven initiatives. When I'm not coding, you'll find me on the badminton court wielding my racket, studying Mandarin in evening classes, or exploring the latest AI libraries to tackle real-world challenges.            
             </p>
           </div>
