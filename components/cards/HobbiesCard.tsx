@@ -24,7 +24,7 @@ const hobbiesData = [
     icon: "🏸",
     title: "Badminton",
     color: "bg-blue-500",
-    image: "/images/hobbies/badminton.jpg",
+    images: ["/images/hobbies/badminton.jpg"],
     description: "My primary sport and passion. I love the fast-paced nature and strategic gameplay. Regular player who enjoys both casual games and competitive matches. Playing badminton has taught me discipline, quick reflexes, and the importance of strategy in competitive situations."
   },
   {
@@ -32,32 +32,50 @@ const hobbiesData = [
     icon: "🈵",
     title: "Language",
     color: "bg-green-500",
-    image: "/images/hobbies/avatar.jpg",
-    description: "Currently attending evening classes to learn Mandarin. I believe language learning opens doors to new cultures and opportunities. Learning new languages helps me connect with diverse communities and understand different perspectives on problem-solving."
+    images: [
+      "/images/hobbies/avatar.jpg",
+      "/images/project.jpeg"
+    ],
+    description: "Currently learning Mandarin class for HSK1 level at Kunkwan International Mandarin Training Centre. Japan course in UPSI (level 1) - I can read and write hiragana, katakana and kanji. Language learning opens doors to new cultures and opportunities, helping me connect with diverse communities and understand different perspectives on problem-solving."
   },
   {
     id: 3,
     icon: "🤖",
     title: "Tech Exploration",
     color: "bg-purple-500",
-    image: "/images/hobbies/workshop.jpg",
-    description: "Constantly exploring the latest AI libraries and technologies. I enjoy experimenting with new frameworks and tools to solve real-world problems. Staying updated with emerging technologies helps me bring innovative solutions to my projects."
+    images: [
+      "/images/hobbies/workshop/workshop.jpg",
+      "/images/hobbies/workshop/workshop1.jpg",
+      "/images/hobbies/workshop/workshop2.jpg",
+      "/images/hobbies/workshop/workshop3.jpg",
+      "/images/hobbies/workshop/workshop4.jpg",
+      "/images/hobbies/workshop/workshop5.jpg"
+    ],
+    description: "Constantly exploring the latest AI libraries and technologies through various workshops and training sessions. I enjoy experimenting with new frameworks and tools to solve real-world problems. Staying updated with emerging technologies helps me bring innovative solutions to my projects."
   },
   {
     id: 4,
     icon: "💻",
     title: "Coding Projects",
     color: "bg-orange-500",
-    image: "/images/project.png",
-    description: "Building personal projects and helping others with their coding assignments. I find joy in solving complex problems through clean, efficient code. Each project teaches me new approaches to software architecture and user experience design."
+    images: [
+      "/images/hobbies/coding/fl1.png",
+      "/images/hobbies/coding/fl2.png",
+      "/images/hobbies/coding/fl3.png",
+    ],
+    description: "Building personal side projects, conducting coding experiments, and working on freelance projects. I find joy in solving complex problems through clean, efficient code. Each project teaches me new approaches to software architecture and user experience design, while freelance work helps me understand real-world client requirements."
   },
   {
     id: 5,
     icon: "✈️",
     title: "Travel",
     color: "bg-red-500",
-    image: "/images/hobbies/avatar.jpg",
-    description: "Exploring new places and experiencing different cultures broadens my perspective. Travel inspires creativity and helps me understand how technology impacts different communities around the world. Each journey brings new insights that influence my approach to development."
+    images: [
+      "/images/hobbies/travel/travel3.jpg",
+      "/images/hobbies/travel/travel1.jpg",
+      "/images/hobbies/travel/travel2.jpg"
+    ],
+    description: "Exploring new places like Lijiang, China and Acheh, Indonesia. These travels broaden my perspective and inspire creativity. Each destination teaches me how technology impacts different communities around the world, bringing new insights that influence my approach to development and cultural understanding."
   }
 ];
 
@@ -90,22 +108,36 @@ const TabContent = memo(({ hobby }: { hobby: typeof hobbiesData[0] }) => (
     animate={{ opacity: 1, y: 0 }}
     exit={{ opacity: 0, y: 20 }}
     transition={{ duration: 0.3 }}
-    className="space-y-4"
+    className="space-y-6"
   >
-    <div className="relative h-48 w-full overflow-hidden rounded-lg">
-      <Image
-        src={hobby.image}
-        alt={hobby.title}
-        fill
-        className="object-cover"
-      />
+    {/* Images Grid */}
+    <div className={`grid gap-3 ${
+      hobby.images.length === 1 
+        ? 'grid-cols-1' 
+        : hobby.images.length === 2 
+        ? 'grid-cols-1 md:grid-cols-2' 
+        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+    }`}>
+      {hobby.images.map((image, index) => (
+        <div key={index} className="relative h-48 w-full overflow-hidden rounded-lg">
+          <Image
+            src={image}
+            alt={`${hobby.title} ${index + 1}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+      ))}
     </div>
-    <div className="space-y-3">
+    
+    {/* Content */}
+    <div className="space-y-4">
       <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center space-x-2">
         <span>{hobby.icon}</span>
         <span>{hobby.title}</span>
       </h3>
-      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+      <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
         {hobby.description}
       </p>
     </div>
@@ -193,9 +225,10 @@ export const HobbiesCard = memo(() => {
       onClick={handleOpen}
     >
       <Image
-        src="/images/hobbies/badminton.jpg"
+        src={hobbiesData[0].images[0]}
         alt="hobbies"
         fill
+        sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
