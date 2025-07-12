@@ -162,7 +162,7 @@ export const CentreSectionCard = () => {
             </div>
 
             {/* Desktop: Always show full text */}
-            <p className="hidden sm:block text-sm text-slate-700 leading-relaxed mb-4">
+            <p className="hidden text-justify sm:block text-sm text-slate-700 leading-relaxed mb-4">
               I'm a fresh Software Engineer graduate from Sultan Idris Education University (UPSI) who turns ideas into real applications: 
               I've built an interactive Flutter quiz platform that adapts to student performance, a React Native health assistant that uses OCR to digitize records and offers AI-driven symptom insights, 
               and a web-based inventory system with intuitive dashboards and automated reporting. 
