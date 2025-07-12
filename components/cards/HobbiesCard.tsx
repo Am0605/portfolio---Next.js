@@ -24,57 +24,118 @@ const hobbiesData = [
     icon: "🏸",
     title: "Badminton",
     color: "bg-blue-500",
-    description: "My primary sport and passion. I love the fast-paced nature and strategic gameplay. Regular player who enjoys both casual games and competitive matches."
+    image: "/images/hobbies/badminton.jpg",
+    description: "My primary sport and passion. I love the fast-paced nature and strategic gameplay. Regular player who enjoys both casual games and competitive matches. Playing badminton has taught me discipline, quick reflexes, and the importance of strategy in competitive situations."
   },
   {
     id: 2,
     icon: "🈵",
-    title: "Learning Mandarin",
+    title: "Language",
     color: "bg-green-500",
-    description: "Currently attending evening classes to learn Mandarin. I believe language learning opens doors to new cultures and opportunities."
+    image: "/images/hobbies/avatar.jpg",
+    description: "Currently attending evening classes to learn Mandarin. I believe language learning opens doors to new cultures and opportunities. Learning new languages helps me connect with diverse communities and understand different perspectives on problem-solving."
   },
   {
     id: 3,
     icon: "🤖",
-    title: "AI & Tech Exploration",
+    title: "Tech Exploration",
     color: "bg-purple-500",
-    description: "Constantly exploring the latest AI libraries and technologies. I enjoy experimenting with new frameworks and tools to solve real-world problems."
+    image: "/images/hobbies/workshop.jpg",
+    description: "Constantly exploring the latest AI libraries and technologies. I enjoy experimenting with new frameworks and tools to solve real-world problems. Staying updated with emerging technologies helps me bring innovative solutions to my projects."
   },
   {
     id: 4,
     icon: "💻",
     title: "Coding Projects",
     color: "bg-orange-500",
-    description: "Building personal projects and helping others with their coding assignments. I find joy in solving complex problems through clean, efficient code."
+    image: "/images/project.png",
+    description: "Building personal projects and helping others with their coding assignments. I find joy in solving complex problems through clean, efficient code. Each project teaches me new approaches to software architecture and user experience design."
+  },
+  {
+    id: 5,
+    icon: "✈️",
+    title: "Travel",
+    color: "bg-red-500",
+    image: "/images/hobbies/avatar.jpg",
+    description: "Exploring new places and experiencing different cultures broadens my perspective. Travel inspires creativity and helps me understand how technology impacts different communities around the world. Each journey brings new insights that influence my approach to development."
   }
 ];
 
-// Memoized hobby item component
-const HobbyItem = memo(({ hobby }: { hobby: typeof hobbiesData[0] }) => (
-  <div className="space-y-3">
-    <div className="flex items-center space-x-3">
-      <div className={`w-2 h-2 ${hobby.color} rounded-full`}></div>
-      <h3 className="font-semibold text-lg">{hobby.icon} {hobby.title}</h3>
-    </div>
-    <p className="text-sm leading-relaxed">
-      {hobby.description}
-    </p>
-  </div>
+// Memoized tab button component
+const TabButton = memo(({ hobby, isActive, onClick }: { 
+  hobby: typeof hobbiesData[0], 
+  isActive: boolean, 
+  onClick: () => void 
+}) => (
+  <button
+    onClick={onClick}
+    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-200 ${
+      isActive 
+        ? `${hobby.color} text-white shadow-lg` 
+        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+    }`}
+  >
+    <span className="text-lg">{hobby.icon}</span>
+    <span className="font-medium text-sm">{hobby.title}</span>
+  </button>
 ));
 
-HobbyItem.displayName = "HobbyItem";
+TabButton.displayName = "TabButton";
+
+// Memoized tab content component
+const TabContent = memo(({ hobby }: { hobby: typeof hobbiesData[0] }) => (
+  <motion.div 
+    key={hobby.id}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: 20 }}
+    transition={{ duration: 0.3 }}
+    className="space-y-4"
+  >
+    <div className="relative h-48 w-full overflow-hidden rounded-lg">
+      <Image
+        src={hobby.image}
+        alt={hobby.title}
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="space-y-3">
+      <h3 className="text-xl font-bold text-gray-900 dark:text-white flex items-center space-x-2">
+        <span>{hobby.icon}</span>
+        <span>{hobby.title}</span>
+      </h3>
+      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+        {hobby.description}
+      </p>
+    </div>
+  </motion.div>
+));
+
+TabContent.displayName = "TabContent";
 
 // Memoized dialog content component
 const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
-  const renderHobbies = useMemo(() => 
-    hobbiesData.map((hobby) => (
-      <HobbyItem key={hobby.id} hobby={hobby} />
-    )), []
+  const [activeTab, setActiveTab] = useState(0);
+
+  const handleTabChange = useCallback((index: number) => {
+    setActiveTab(index);
+  }, []);
+
+  const renderTabs = useMemo(() => 
+    hobbiesData.map((hobby, index) => (
+      <TabButton 
+        key={hobby.id} 
+        hobby={hobby} 
+        isActive={activeTab === index}
+        onClick={() => handleTabChange(index)}
+      />
+    )), [activeTab, handleTabChange]
   );
 
   return (
     <motion.div 
-      className="relative w-full max-w-2xl mx-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl"
+      className="relative w-full max-w-4xl mx-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
@@ -87,37 +148,29 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
         <XIcon size={20} />
       </button>
       
-      <div className="relative h-64 w-full overflow-hidden rounded-t-2xl">
-        <Image
-          src="/images/hobbies/badminton.jpg"
-          alt="hobbies"
-          fill
-          className="object-cover"
-        />
-      </div>
-
       <div className="p-6">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
           My Hobbies & Interests
         </h2>
 
-        <motion.div
-          variants={descriptionVariants}
-          initial="initial"
-          animate="animate"
-          className="space-y-4 text-gray-700 dark:text-gray-300"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {renderHobbies}
-          </div>
+        {/* Tab Navigation */}
+        <div className="flex flex-wrap justify-center gap-2 mb-6">
+          {renderTabs}
+        </div>
 
-          <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
-            <p className="text-sm italic text-center">
-              "I believe in maintaining a balance between technical pursuits and physical activities, 
-              while continuously learning and growing in different aspects of life."
-            </p>
-          </div>
-        </motion.div>
+        {/* Tab Content */}
+        <div className="min-h-[400px]">
+          <AnimatePresence mode="wait">
+            <TabContent hobby={hobbiesData[activeTab]} />
+          </AnimatePresence>
+        </div>
+
+        <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
+          <p className="text-sm italic text-center text-gray-700 dark:text-gray-300">
+            "I believe in maintaining a balance between technical pursuits and physical activities, 
+            while continuously learning and growing in different aspects of life."
+          </p>
+        </div>
       </div>
     </motion.div>
   );
