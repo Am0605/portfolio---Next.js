@@ -167,7 +167,7 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
 
   return (
     <motion.div 
-      className="relative w-full max-w-4xl mx-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl"
+      className="relative w-full max-w-4xl mx-4 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-h-[90vh] overflow-hidden"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
@@ -175,30 +175,30 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
     >
       <button 
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 bg-white dark:bg-gray-800 rounded-full p-2 shadow-lg"
+        className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 bg-white dark:bg-gray-800 rounded-full p-1.5 sm:p-2 shadow-lg"
       >
-        <XIcon size={20} />
+        <XIcon size={16} className="sm:w-5 sm:h-5" />
       </button>
       
-      <div className="p-6">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+      <div className="p-3 sm:p-6 overflow-y-auto max-h-[90vh]">
+        <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center pr-8">
           My Hobbies & Interests
         </h2>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-6">
+        <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
           {renderTabs}
         </div>
 
         {/* Tab Content */}
-        <div className="min-h-[400px]">
+        <div className="min-h-[300px] sm:min-h-[400px]">
           <AnimatePresence mode="wait">
             <TabContent hobby={hobbiesData[activeTab]} />
           </AnimatePresence>
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
-          <p className="text-sm italic text-center text-gray-700 dark:text-gray-300">
+        <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
+          <p className="text-xs sm:text-sm italic text-center text-gray-700 dark:text-gray-300">
             "I believe in maintaining a balance between technical pursuits and physical activities, 
             while continuously learning and growing in different aspects of life."
           </p>
