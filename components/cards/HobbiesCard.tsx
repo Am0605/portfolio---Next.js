@@ -204,40 +204,41 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
       transition={{ duration: 0.2 }}
     >
       <button 
-        onClick={onClose}
-        className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 bg-white dark:bg-gray-800 rounded-full p-1.5 sm:p-2 shadow-lg"
+      onClick={onClose}
+      className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 bg-white dark:bg-gray-800 rounded-full p-1.5 sm:p-2 shadow-lg"
       >
-        <XIcon size={16} className="sm:w-5 sm:h-5" />
+      <XIcon size={16} className="sm:w-5 sm:h-5" />
       </button>
       
       <div className="p-3 sm:p-6 max-h-[90vh]">
-        <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center pr-8">
-          My Hobbies & Interests
-        </h2>
+      <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center pr-8">
+        My Hobbies & Interests
+      </h2>
 
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
-          {renderTabs}
-        </div>
+      {/* Tab Navigation */}
+      <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
+        {renderTabs}
+      </div>
 
-        {/* Tab Content */}
-        <div 
-          ref={scrollRef}
-          className={`min-h-[250px] sm:min-h-[300px] md:min-h-[400px] max-h-[50vh] sm:max-h-[60vh] overflow-y-auto custom-scrollbar ${
-            isScrolling ? 'scrolling' : ''
-          }`}
-        >
-          <AnimatePresence mode="wait">
-            <TabContent hobby={hobbiesData[activeTab]} />
-          </AnimatePresence>
-        </div>
+      {/* Tab Content */}
+      <div 
+        ref={scrollRef}
+        className={`min-h-[250px] sm:min-h-[300px] md:min-h-[400px] max-h-[50vh] sm:max-h-[60vh] overflow-y-auto custom-scrollbar ${
+        isScrolling ? 'scrolling' : ''
+        }`}
+      >
+        <AnimatePresence mode="wait">
+        <TabContent hobby={hobbiesData[activeTab]} />
+        </AnimatePresence>
+      </div>
+      
+      <div className="mt-3 sm:mt-4 md:mt-6 p-2 sm:p-3 md:p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
+        <p className="text-xs sm:text-sm text-center text-gray-700 dark:text-gray-300 italic leading-relaxed">
+        "I believe in maintaining a balance between technical pursuits and physical activities, 
+        while continuously learning and growing in different aspects of life."
+        </p>
+      </div>
 
-        <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
-          <p className="text-xs sm:text-sm italic text-center text-gray-700 dark:text-gray-300">
-            "I believe in maintaining a balance between technical pursuits and physical activities, 
-            while continuously learning and growing in different aspects of life."
-          </p>
-        </div>
       </div>
     </motion.div>
   );
