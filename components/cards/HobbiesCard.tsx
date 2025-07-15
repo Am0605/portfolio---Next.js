@@ -210,35 +210,39 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
       <XIcon size={16} className="sm:w-5 sm:h-5" />
       </button>
       
-      <div className="p-3 sm:p-6 max-h-[90vh]">
-      <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center pr-8">
-        My Hobbies & Interests
-      </h2>
+      <div className="flex flex-col h-full max-h-[90vh]">
+        <div className="flex-shrink-0 p-3 sm:p-6 pb-0">
+          <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center pr-8">
+            My Hobbies & Interests
+          </h2>
 
-      {/* Tab Navigation */}
-      <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
-        {renderTabs}
-      </div>
+          {/* Tab Navigation */}
+          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
+            {renderTabs}
+          </div>
+        </div>
 
-      {/* Tab Content */}
-      <div 
-        ref={scrollRef}
-        className={`min-h-[250px] sm:min-h-[300px] md:min-h-[400px] max-h-[50vh] sm:max-h-[60vh] overflow-y-auto custom-scrollbar ${
-        isScrolling ? 'scrolling' : ''
-        }`}
-      >
-        <AnimatePresence mode="wait">
-        <TabContent hobby={hobbiesData[activeTab]} />
-        </AnimatePresence>
-      </div>
-      
-      <div className="mt-3 sm:mt-4 md:mt-6 p-2 sm:p-3 md:p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
-        <p className="text-xs sm:text-sm text-center text-gray-700 dark:text-gray-300 italic leading-relaxed">
-        "I believe in maintaining a balance between technical pursuits and physical activities, 
-        while continuously learning and growing in different aspects of life."
-        </p>
-      </div>
-
+        {/* Tab Content */}
+        <div 
+          ref={scrollRef}
+          className={`flex-1 overflow-y-auto custom-scrollbar px-3 sm:px-6 pb-16 ${
+            isScrolling ? 'scrolling' : ''
+          }`}
+        >
+          <AnimatePresence mode="wait">
+            <TabContent hobby={hobbiesData[activeTab]} />
+          </AnimatePresence>
+        </div>
+        
+        {/* Footer */}
+        <div className="flex-shrink-0 p-3 sm:p-6 pt-3 sm:pt-4">
+          <div className="p-2 sm:p-3 md:p-4 bg-blue-50 dark:bg-gray-800 rounded-lg">
+            <p className="text-xs sm:text-sm text-center text-gray-700 dark:text-gray-300 italic leading-relaxed">
+              "I believe in maintaining a balance between technical pursuits and physical activities, 
+              while continuously learning and growing in different aspects of life."
+            </p>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
