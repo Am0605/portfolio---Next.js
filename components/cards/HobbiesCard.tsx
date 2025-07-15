@@ -33,8 +33,8 @@ const hobbiesData = [
     title: "Language",
     color: "bg-green-500",
     images: [
-      "/images/hobbies/avatar.jpg",
-      "/images/project.jpeg"
+      "/images/hobbies/language/mandarin.png",
+      "/images/hobbies/language/japan.jpg"
     ],
     description: "Currently learning Mandarin class for HSK1 level at Kunkwan International Mandarin Training Centre. Japan course in UPSI (level 1) - I can read and write hiragana, katakana and kanji. Language learning opens doors to new cultures and opportunities, helping me connect with diverse communities and understand different perspectives on problem-solving."
   },
@@ -180,7 +180,7 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
         <XIcon size={16} className="sm:w-5 sm:h-5" />
       </button>
       
-      <div className="p-3 sm:p-6 overflow-y-auto max-h-[90vh]">
+      <div className="p-3 sm:p-6 max-h-[90vh]">
         <h2 className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-center pr-8">
           My Hobbies & Interests
         </h2>
@@ -191,7 +191,7 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
         </div>
 
         {/* Tab Content */}
-        <div className="min-h-[300px] sm:min-h-[400px]">
+        <div className="min-h-[300px] sm:min-h-[400px] overflow-y-auto">
           <AnimatePresence mode="wait">
             <TabContent hobby={hobbiesData[activeTab]} />
           </AnimatePresence>
