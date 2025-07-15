@@ -26,7 +26,7 @@ export const RecommendationCard = () => {
           <p className="text-xs text-blue-200 mt-1">- Ain Athirah, Webse Junior Web Developer</p>
         </div>
         <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
-          <p className="text-sm text-white">"he's a thinker... for the past 4 months of sitting beside him, i know that he is in the process of deep thinking, and he has total concentration"</p>
+          <p className="text-sm text-white">"Aside from Am’s outstanding technical skills, he has a warm personality that brings people together, perfect for working in a team."</p>
           <p className="text-xs text-blue-200 mt-1">- Jaafar Chia Yu Fan, Colleague Webse Intern</p>
         </div>
       </div>
