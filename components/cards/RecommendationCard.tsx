@@ -18,8 +18,8 @@ export const RecommendationCard = () => {
       <h2 className="text-xl font-bold mb-4 text-white">Endorsements</h2>
       <div className="space-y-3">
         <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
-          <p className="text-sm text-white">"Adham is an exceptional developer with a keen eye for detail and a passion for innovation."</p>
-          <p className="text-xs text-blue-200 mt-1">- Sze Wan, Supervisor Industrial Training</p>
+          <p className="text-sm text-white">"Adham is hardworking and dedicated student who consistently gives his best effort in every task. He approaches challenges with a positive attitude and collaborates respectfully with peers."</p>
+          <p className="text-xs text-blue-200 mt-1">- Dr. Harnani Mat Zin, Supervisor Final Year Project</p>
         </div>
         <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
           <p className="text-sm text-white">"His ability to solve complex problems is unmatched."</p>
