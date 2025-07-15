@@ -217,7 +217,7 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
           </h2>
 
           {/* Tab Navigation */}
-          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-4 sm:mb-6">
+          <div className="flex flex-wrap justify-center gap-1 sm:gap-2 mb-2 sm:mb-2">
             {renderTabs}
           </div>
         </div>
