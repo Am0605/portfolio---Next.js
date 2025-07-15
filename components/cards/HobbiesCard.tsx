@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState, useRef, useEffect } from "react";
 import { XIcon } from "lucide-react";
 
 const childVariants = {
@@ -149,10 +149,40 @@ TabContent.displayName = "TabContent";
 // Memoized dialog content component
 const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleTabChange = useCallback((index: number) => {
     setActiveTab(index);
   }, []);
+
+  const handleScroll = useCallback(() => {
+    setIsScrolling(true);
+    
+    // Clear existing timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    
+    // Set timeout to hide scrollbar after scrolling stops
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsScrolling(false);
+    }, 1000); // Hide after 1 second of no scrolling
+  }, []);
+
+  useEffect(() => {
+    const scrollElement = scrollRef.current;
+    if (scrollElement) {
+      scrollElement.addEventListener('scroll', handleScroll);
+      return () => {
+        scrollElement.removeEventListener('scroll', handleScroll);
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current);
+        }
+      };
+    }
+  }, [handleScroll]);
 
   const renderTabs = useMemo(() => 
     hobbiesData.map((hobby, index) => (
@@ -191,7 +221,12 @@ const DialogContent = memo(({ onClose }: { onClose: () => void }) => {
         </div>
 
         {/* Tab Content */}
-        <div className="min-h-[300px] sm:min-h-[400px] overflow-y-auto">
+        <div 
+          ref={scrollRef}
+          className={`min-h-[250px] sm:min-h-[300px] md:min-h-[400px] max-h-[50vh] sm:max-h-[60vh] overflow-y-auto custom-scrollbar ${
+            isScrolling ? 'scrolling' : ''
+          }`}
+        >
           <AnimatePresence mode="wait">
             <TabContent hobby={hobbiesData[activeTab]} />
           </AnimatePresence>

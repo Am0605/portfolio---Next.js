@@ -420,3 +420,67 @@
   background: rgba(251, 146, 60, 0.95) !important;
   color: white !important;
 }
+
+/* Custom Scrollbar Styles */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border-radius: 9999px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(156, 163, 175);
+}
+
+/* Show scrollbar on hover or when scrolling */
+.custom-scrollbar:hover {
+  scrollbar-color: rgb(209, 213, 219) transparent;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(209, 213, 219);
+}
+
+.custom-scrollbar.scrolling {
+  scrollbar-color: rgb(209, 213, 219) transparent;
+}
+
+.custom-scrollbar.scrolling::-webkit-scrollbar-thumb {
+  background-color: rgb(209, 213, 219);
+}
+
+/* Dark mode scrollbar */
+.dark .custom-scrollbar:hover {
+  scrollbar-color: rgb(75, 85, 99) transparent;
+}
+
+.dark .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(75, 85, 99);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(107, 114, 128);
+}
+
+.dark .custom-scrollbar.scrolling {
+  scrollbar-color: rgb(75, 85, 99) transparent;
+}
+
+.dark .custom-scrollbar.scrolling::-webkit-scrollbar-thumb {
+  background-color: rgb(75, 85, 99);
+}
