@@ -22,7 +22,7 @@ export const RecommendationCard = () => {
           <p className="text-xs text-blue-200 mt-1">- Dr. Harnani Mat Zin, Supervisor Final Year Project</p>
         </div>
         <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
-          <p className="text-sm text-white">"His ability to solve complex problems is unmatched."</p>
+          <p className="text-sm text-white">"He’s the kind of person whose energy lights up the room — easy to talk to, fun to be around, and someone everyone feels comfortable with. On top of that, he’s incredibly talented at what he does and always brings his best to the team. "</p>
           <p className="text-xs text-blue-200 mt-1">- Ain Athirah, Webse Junior Web Developer</p>
         </div>
         <div className="bg-white/20 backdrop-blur-sm p-3 rounded-lg">
