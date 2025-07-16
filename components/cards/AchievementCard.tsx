@@ -21,28 +21,28 @@ const achievementsData = {
         title: "IEEE SMC Award",
         icon: <Trophy className="w-6 h-6" />,
         color: "bg-yellow-500",
-        image: "/images/achievements/menang1.jpg"
+        image: "/images/achievements/menang4.jpg"
       },
       {
         id: 2,
         title: "Best Development Product Award",
         icon: <Star className="w-6 h-6" />,
         color: "bg-blue-500",
-        image: "/images/achievements/menang2.jpg"
+        image: "/images/achievements/menang5.jpg"
       },
       {
         id: 3,
         title: "Best Programme Special Award",
         icon: <Award className="w-6 h-6" />,
         color: "bg-green-500",
-        image: "/images/achievements/menang4.jpg"
+        image: "/images/achievements/menang.png"
       },
       {
         id: 4,
         title: "Gold Award",
         icon: <Trophy className="w-6 h-6" />,
         color: "bg-purple-500",
-        image: "/images/achievements/menang5.jpg"
+        image: "/images/achievements/menang6.jpg"
       }
     ]
   },
@@ -61,35 +61,135 @@ const achievementsData = {
   }
 };
 
+// Memoized lightbox component
+const Lightbox = memo(({ image, alt, isOpen, onClose }: { 
+  image: string, 
+  alt: string, 
+  isOpen: boolean, 
+  onClose: () => void 
+}) => {
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div
+        className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 text-white hover:text-gray-300 bg-black/50 rounded-full p-2 transition-colors"
+        >
+          <XIcon size={24} />
+        </button>
+        
+        <motion.div
+          className="relative max-w-[90vw] max-h-[90vh] overflow-hidden rounded-lg"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Image
+            src={image}
+            alt={alt}
+            width={1200}
+            height={800}
+            className="object-contain max-w-full max-h-full"
+            sizes="90vw"
+          />
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+});
+
+Lightbox.displayName = "Lightbox";
+
 // Memoized achievement item component
-const AchievementItem = memo(({ achievement }: { achievement: typeof achievementsData.fyp.achievements[0] }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.3 }}
-    className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
-  >
-    <div className="flex space-x-4">
-      <div className={`${achievement.color} p-3 rounded-full text-white flex-shrink-0`}>
-        {achievement.icon}
-      </div>
-      <div className="flex-1 flex items-center">
-        <h3 className="font-bold text-lg text-gray-900 dark:text-white">
-          {achievement.title}
-        </h3>
-      </div>
-    </div>
-    <div className="mt-4 relative h-32 w-full overflow-hidden rounded-lg">
-      <Image
-        src={achievement.image}
+const AchievementItem = memo(({ achievement }: { achievement: typeof achievementsData.fyp.achievements[0] }) => {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
+  const handleImageClick = useCallback(() => {
+    setLightboxOpen(true);
+  }, []);
+
+  const handleLightboxClose = useCallback(() => {
+    setLightboxOpen(false);
+  }, []);
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
+      >
+        <div className="flex space-x-4">
+          <div className={`${achievement.color} p-3 rounded-full text-white flex-shrink-0`}>
+            {achievement.icon}
+          </div>
+          <div className="flex-1 flex items-center">
+            <h3 className="font-bold text-lg text-gray-900 dark:text-white">
+              {achievement.title}
+            </h3>
+          </div>
+        </div>
+        <div 
+          className="mt-4 relative h-48 w-full overflow-hidden rounded-lg cursor-pointer group"
+          onClick={handleImageClick}
+        >
+          <Image
+            src={achievement.image}
+            alt={achievement.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover transition-transform duration-300"
+          />
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 dark:bg-gray-800/90 rounded-full p-2">
+              <svg className="w-6 h-6 text-gray-800 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+      
+      <Lightbox
+        image={achievement.image}
         alt={achievement.title}
-        fill
-        sizes="(max-width: 768px) 100vw, 50vw"
-        className="object-cover"
+        isOpen={lightboxOpen}
+        onClose={handleLightboxClose}
       />
-    </div>
-  </motion.div>
-));
+    </>
+  );
+});
 
 AchievementItem.displayName = "AchievementItem";
 
