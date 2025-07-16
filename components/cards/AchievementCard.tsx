@@ -13,7 +13,7 @@ const childVariants = {
 // Memoized achievements data
 const achievementsData = {
   fyp: {
-    title: <>11<sup>th</sup> IE-RIICH 2025</>,
+    title: "11th IE-RIICH 2025",
     description: "Mir-AI: AI-Driven Personalised Learning System Using Classification Techniques For Secondary Student",
     achievements: [
       {
