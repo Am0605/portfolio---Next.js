@@ -119,7 +119,7 @@ const Lightbox = memo(({ image, alt, isOpen, onClose }: {
             alt={alt}
             width={1200}
             height={800}
-            className="object-contain max-w-full max-h-full"
+            className="object-contain max-w-full max-h-full "
             sizes="90vw"
           />
         </motion.div>
