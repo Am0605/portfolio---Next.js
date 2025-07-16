@@ -69,12 +69,12 @@ const AchievementItem = memo(({ achievement }: { achievement: typeof achievement
     transition={{ duration: 0.3 }}
     className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg hover:shadow-xl transition-shadow duration-300"
   >
-    <div className="flex items-start space-x-4">
+    <div className="flex space-x-4">
       <div className={`${achievement.color} p-3 rounded-full text-white flex-shrink-0`}>
         {achievement.icon}
       </div>
-      <div className="flex-1">
-        <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-2">
+      <div className="flex-1 flex items-center">
+        <h3 className="font-bold text-lg text-gray-900 dark:text-white">
           {achievement.title}
         </h3>
       </div>
@@ -101,7 +101,7 @@ const AchievementSection = memo(({ section, title, description }: {
 }) => (
   <div className="space-y-4">
     <div className="text-center">
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
         {title}
       </h3>
       <p className="text-gray-600 dark:text-gray-400 text-sm">
