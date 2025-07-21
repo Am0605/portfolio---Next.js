@@ -15,7 +15,7 @@ export const AvatarCard = () => {
       variants={childVariants}
       whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.3 }}
-    >
+    >  
       <Image
         priority ={true}
         src="/images/avatar1.webp"
@@ -31,7 +31,7 @@ export const AvatarCard = () => {
         <span className="text-red-400 text-xs font-mono uppercase tracking-wider">Classified</span>
           </div>
           <h1 className="text-lg font-bold text-white text-center font-mono">
-        Click 10 Times to Reveal Something
+            Click 10 Times to Reveal Something
           </h1>
         </div>
       </div>

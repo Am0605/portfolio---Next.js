@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { useCallback } from "react";
 
 const childVariants = {
   hidden: { opacity: 0, y: 20, scale: 0.95 },
@@ -9,15 +10,20 @@ const childVariants = {
 };
 
 export const ProjectCard = () => {
+  const handleClick = useCallback(() => {
+    window.open('/projects', '_blank', 'noopener,noreferrer');
+  }, []);
+
   return (
     <motion.div 
-      className="hidden md:block md:col-start-2 md:row-start-1 md:col-span-1 md:row-span-2 glass-card p-4 group justify-center relative overflow-hidden"
+      className="hidden md:block md:col-start-2 md:row-start-1 md:col-span-1 md:row-span-2 glass-card p-4 group justify-center relative overflow-hidden cursor-pointer"
       variants={childVariants}
       whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.3 }}
+      onClick={handleClick}
     >
       <Image 
-        priority ={true}
+        priority={true}
         src="/images/project.jpeg"
         alt="Projects"
         fill
@@ -25,9 +31,11 @@ export const ProjectCard = () => {
         sizes="(max-width: 768px) 0px, 25vw"
       />
       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10">
-        <h1 className="text-3xl font-bold mb-2 text-white text-center">
-          Projects
-        </h1>
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-2 text-white">
+            Projects
+          </h1>
+        </div>
       </div>
     </motion.div>
   );
