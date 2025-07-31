@@ -34,15 +34,13 @@ export const ExperienceCard = () => {
       whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="flex items-center mb-3 md:mb-4 flex-shrink-0">
-        <h2 className="text-lg sm:text-xl md:text-lg lg:text-xl font-bold text-white">Experience</h2>
-      </div>
+      <h2 className="text-lg sm:text-xl md:text-lg lg:text-xl font-bold text-white text-center sm:text-left mb-3 md:mb-4 flex-shrink-0">Experience</h2>
 
       <div 
         ref={scrollRef}
         className={`flex-1 overflow-y-auto pr-2 custom-scrollbar ${showScrollbar ? 'show-scrollbar' : ''}`}
       >
-        <div className="space-y-4 sm:space-y-5 md:space-y-4 lg:space-y-5">
+        <div className="space-y-3 sm:space-y-3 md:space-y-3 lg:space-y-3">
           <div className="border-l-4 border-cyan-400 pl-3 sm:pl-4 transition-all duration-200 hover:border-cyan-300 hover:pl-5">
             <h3 className="font-semibold text-white text-sm sm:text-base md:text-sm lg:text-base leading-tight">
               Trainee Web Developer

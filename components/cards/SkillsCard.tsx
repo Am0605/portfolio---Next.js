@@ -71,6 +71,7 @@ export const SkillsCard = () => {
       whileHover={{ y: -5, scale: 1.02 }}
       transition={{ duration: 0.3 }}
     >
+      <h2 className="text-xl sm:hidden font-bold mb-3 sm:mb-4 text-white text-center">Skills</h2>
       <div className="relative z-10 h-full flex flex-col">
         {/* Tab Navigation */}
         <div className="flex gap-1 mb-3 sm:mb-4 bg-white/5 backdrop-blur-sm rounded-lg p-1 flex-shrink-0">
